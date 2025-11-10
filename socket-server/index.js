@@ -1,5 +1,8 @@
 import { createServer } from "http";
 import { Server } from "socket.io";
+import express from "express";
+
+const app = express();
 
 const httpServer = createServer();
 
@@ -21,7 +24,12 @@ io.on("connection", (socket) => {
   socket.on("disconnect", () => {
     console.log(" Socket disconnected:", socket.id);
   });
-});
+} );
+
+app.get( "/", ( req, res ) => {
+  res.send({success: true, message: "Socket Server is Live!"})
+} )
+
 
 httpServer.listen(5050, () => {
   console.log(" Socket.IO server running on port 5050");
