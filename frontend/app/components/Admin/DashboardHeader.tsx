@@ -19,7 +19,7 @@ function DashboardHeader() {
   const [updateNotification, { isSuccess }] =
     useUpdateNotificationStatusMutation();
   const [notifications, setNotifications] = useState<any>([]);
-  const [audio] = useState(
+  const [audio] = useState<HTMLAudioElement>(
     new Audio(
       "https://res.cloudinary.com/duxd5fq1t/video/upload/v1755855673/mixkit-long-pop-2358_rbfvi1.mp3"
     )
