@@ -4,11 +4,11 @@ import express from "express";
 
 const app = express();
 
-const httpServer = createServer();
+const httpServer = createServer(app);
 
 const io = new Server(httpServer, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: "https://lms-frontend-plum-three.vercel.app",
     methods: ["GET", "POST"],
     credentials: true
   }
@@ -30,7 +30,8 @@ app.get( "/", ( req, res ) => {
   res.send({success: true, message: "Socket Server is Live!"})
 } )
 
+const PORT = process.env.PORT || 5050;
 
-httpServer.listen(5050, () => {
+httpServer.listen(PORT, () => {
   console.log(" Socket.IO server running on port 5050");
 });
